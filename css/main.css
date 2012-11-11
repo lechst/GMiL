@@ -1,0 +1,7 @@
+#main { border: 2px solid black; width: 320px; height: 480px;
+    margin-left: auto; margin-right: auto; }
+#header  { border: 1px solid black; width: 318px; height: 38px;
+    text-align: center }
+#text { border: 1px solid black; width: 318px; height: 58px; }
+#box { border: 1px solid black; width: 318px; height: 318px; }
+#buttons { border: 1px solid black; width: 318px; height: 58px; }

@@ -1,3 +1,5 @@
+var appName = "Math & Logic Games";
+
 function mainLayout(h,t,bo,bu) {
     $('body').empty().append('<div id="main"></div>');
     $('#main').append('<div id="header"></div>','<div id="text"></div>','<div id="box"></div>','<div id="buttons"></div>');
@@ -15,8 +17,6 @@ function mainMenu() {
 
 $(document).ready(function(){
 
-    var appName = "Math & Logic Games";
-
     mainLayout(appName);
 
     mainMenu();
@@ -29,14 +29,14 @@ $(document).ready(function(){
             $('#play').hide();
         }
         else if($("#gamename").val() == 'game1') {
-            $('#game').append('Your choice is: '+game1.name+'.');
+            $('#game').append(game1.gameMainMenuLayout);
             $('#play').show();
         }
     });
 
     $('#play').click(function() {
         if($("#gamename").val() == 'game1') {
-            alert(game1.name);
+            game1.gameIntroLayout();
         } else {
             alert("Select your game!");
         }

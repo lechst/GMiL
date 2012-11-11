@@ -12,6 +12,10 @@ gMML = gMML + '</div>';
 
 var game1 = {name: 'Pawn On a Chessboard',
              gameMainMenuLayout: gMML,
+             gameIntro: ["Strona 1"+gMML, "Strona 2", "Strona 3"],
              gameIntroLayout: function() {
-                 mainLayout(appName+': '+this.name);
+                 mainLayout(appName+': '+this.name, "Please read the instructions, then click Play",
+                     '<div id="intro"></div><div id="introbuttons"><input id="introback" type="button" value="Back" /><input id="intronext" type="button" value="Next" /></div>',
+                     '<input id="playgame" type="button" value="Play" />');
+                 $('#intro').append(this.gameIntro[0]);
              }};

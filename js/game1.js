@@ -12,10 +12,34 @@ gMML = gMML + '</div>';
 
 var game1 = {name: 'Pawn On a Chessboard',
              gameMainMenuLayout: gMML,
-             gameIntro: ["Strona 1"+gMML, "Strona 2", "Strona 3"],
+             gameIntro: ["Strona 1"+gMML, "Strona 2"+gMML, "Strona 3"+gMML],
              gameIntroLayout: function() {
-                 mainLayout(appName+': '+this.name, "Please read the instructions, then click Play",
+                 mainLayout(appName+': '+game1.name, "Please read the instructions, then click Play",
                      '<div id="intro"></div><div id="introbuttons"><input id="introback" type="button" value="Back" /><input id="intronext" type="button" value="Next" /></div>',
                      '<input id="playgame" type="button" value="Play" />');
-                 $('#intro').append(this.gameIntro[0]);
+
+                 var indexIntro = 0;
+
+                 $('#intro').append(game1.gameIntro[indexIntro]);
+
+                 $('#introback').hide();
+
+                 $('#intronext').click(function() {
+                     indexIntro = indexIntro + 1;
+                     $('#introback').show();
+                     if(indexIntro == (game1.gameIntro.length - 1)) {
+                         $('#intronext').hide();
+                     }
+                     $('#intro').empty().append(game1.gameIntro[indexIntro]);
+                 });
+
+                 $('#introback').click(function() {
+                     indexIntro = indexIntro - 1;
+                     $('#intronext').show();
+                     if(indexIntro == 0) {
+                         $('#introback').hide();
+                     }
+                     $('#intro').empty().append(game1.gameIntro[indexIntro]);
+                 });
+
              }};

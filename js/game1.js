@@ -50,7 +50,7 @@ gMML2 = gMML2 + '</div>';
 
 var game1 = {name: 'Pawn On a Chessboard',
              gameMainMenuLayout: gMML,
-             gameIntro: ["Starting from the green field..."+gMML0, "...and making one of the possible moves..."+gMML1, "...you have to reach the red field."+gMML2],
+             gameIntro: ["Starting from the green field..."+gMML0, "...and making one of the possible moves..."+gMML1, "...you have to reach the red field before opponent."+gMML2],
              gameIntroLayout: function() {
                  mainLayout(appName+': '+game1.name, "Please read the instructions, then click Play",
                      '<div id="intro"></div><div id="introbuttons"><input id="introback" type="button" value="Back" /><input id="intronext" type="button" value="Next" /></div>',

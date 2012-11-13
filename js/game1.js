@@ -119,6 +119,17 @@ var game1 = {name: 'Pawn On a Chessboard',
                  $('.field:eq('+9+')').addClass("possible");
                  $('.field:eq('+63+')').addClass("winning");
 
+                 $('.possible').click(function() {
+
+                     var offset = $(this).offset();
+                     var offsetPawn = $('.pawn').offset();
+                     var pushRight = (offset.left-offsetPawn.left+5);
+                     var pushDown = (offset.top-offsetPawn.top+5);
+
+                     $('.pawn').animate({left: '+='+pushRight+'px', top: '+='+pushDown+'px'}, "slow");
+
+                 });
+
                  $('#backmenu').click(function() {
                      mainMenuLayout();
                  });

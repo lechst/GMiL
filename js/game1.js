@@ -111,6 +111,14 @@ var game1 = {name: 'Pawn On a Chessboard',
 
                  $('#game').empty().append(game1.gameLayout);
 
+                 $('.field:eq('+0+')').append('<div class="pawn"></div>');
+
+                 $('.field:eq('+0+')').addClass("starting");
+                 $('.field:eq('+1+')').addClass("possible");
+                 $('.field:eq('+8+')').addClass("possible");
+                 $('.field:eq('+9+')').addClass("possible");
+                 $('.field:eq('+63+')').addClass("winning");
+
                  $('#backmenu').click(function() {
                      mainMenuLayout();
                  });

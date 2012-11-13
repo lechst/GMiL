@@ -11,7 +11,7 @@ function mainLayout(h,t,bo,bu) {
 
 function mainMenu() {
     $('#text').append("Please select your game");
-    $('#box').append('<select id="gamename"><option selected="selected"></option><option value="game1">'+game1.name+'</option></select><div id="game"></div>');
+    $('#box').append('<select id="gamename"><option selected="selected"></option><option value="game1">'+game1.name+'</option></select><div id="gamebox"></div>');
     $('#buttons').append('<input id="playintro" type="button" value="Play" />');
 }
 
@@ -23,12 +23,12 @@ function mainMenuLayout() {
     $('#playintro').hide();
 
     $('#gamename').change(function() {
-        $('#game').empty();
+        $('#gamebox').empty();
         if($("#gamename").val() == '') {
             $('#playintro').hide();
         }
         else if($("#gamename").val() == 'game1') {
-            $('#game').append(game1.gameMainMenuLayout);
+            $('#gamebox').append(game1.gameMainMenuLayout);
             $('#playintro').show();
         }
     });

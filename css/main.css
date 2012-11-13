@@ -14,3 +14,6 @@
 .pawn { background-color: black; width: 20px; height: 20px; margin: 4px; border-radius: 10px; }
 #introback { float: left; }
 #intronext { float: right; }
+#backmenu { float: left; }
+#backintro { float: left; }
+#finish { float: right; }

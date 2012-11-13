@@ -15,8 +15,7 @@ function mainMenu() {
     $('#buttons').append('<input id="playintro" type="button" value="Play" />');
 }
 
-$(document).ready(function(){
-
+function mainMenuLayout() {
     mainLayout(appName);
 
     mainMenu();
@@ -41,5 +40,10 @@ $(document).ready(function(){
             alert("Select your game!");
         }
     });
+}
+
+$(document).ready(function(){
+
+    mainMenuLayout();
 
 });

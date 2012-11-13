@@ -5,6 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game1.js" afterPath="$PROJECT_DIR$/js/game1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
     </list>
     <ignored path="GMiL.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,10 +34,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="18" selection-start="712" selection-end="712" vertical-scroll-proportion="0.24">
+            <state line="17" column="24" selection-start="933" selection-end="933" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,16 +46,16 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="23" selection-start="1102" selection-end="1294" vertical-scroll-proportion="0.0">
+            <state line="46" column="21" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game1.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="game1.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="48" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.0">
+            <state line="117" column="0" selection-start="3965" selection-end="3965" vertical-scroll-proportion="0.6344086">
               <folding />
             </state>
           </provider>
@@ -77,8 +78,8 @@
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/main.css" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/game1.js" />
       </list>
     </option>
@@ -172,8 +173,8 @@
     <property name="options.lastSelected" value="settings.github" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_8810fd5c2c79c73adcc73fd0825f3b32fdb816e7/cmd/git.exe" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -379,23 +380,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="24" selection-start="933" selection-end="933" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="23" selection-start="1102" selection-end="1294" vertical-scroll-proportion="0.0">
+        <state line="46" column="21" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="48" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="18" selection-start="712" selection-end="712" vertical-scroll-proportion="0.24">
+        <state line="117" column="0" selection-start="3965" selection-end="3965" vertical-scroll-proportion="0.6344086">
           <folding />
         </state>
       </provider>

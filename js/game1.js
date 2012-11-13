@@ -1,3 +1,11 @@
+var gL = '<div class="chessboard">';
+
+for(var i=0; i < 64; i++) {
+    gL=gL+'<div class="field"></div>';
+}
+
+gL = gL + '</div>';
+
 var gMML = '<div class="chessboard">';
 
 for(var i=0; i < 64; i++) {
@@ -57,6 +65,8 @@ gMML2 = gMML2 + '</div>';
 var game1 = {name: 'Pawn On a Chessboard',
              gameMainMenuLayout: gMML,
              gameIntro: ["Starting from the green field..."+gMML0, "...and making one of the possible moves..."+gMML1, "...you have to reach the red field before opponent."+gMML2],
+             gameText: ["Your move!", "Your opponent's move..."],
+             gameLayout: gL,
              gameIntroLayout: function() {
                  mainLayout(appName+': '+game1.name, "Please read the instructions, then click Play",
                      '<div id="intro"></div><div id="introbuttons"><input id="introback" type="button" value="Back" /><input id="intronext" type="button" value="Next" /></div>',
@@ -64,7 +74,7 @@ var game1 = {name: 'Pawn On a Chessboard',
 
                  var indexIntro = 0;
 
-                 $('#intro').append(game1.gameIntro[indexIntro]);
+                 $('#intro').empty().append(game1.gameIntro[indexIntro]);
 
                  $('#introback').hide();
 
@@ -92,5 +102,28 @@ var game1 = {name: 'Pawn On a Chessboard',
 
              },
              gameGameLayout: function() {
-                 mainLayout(appName+': '+game1.name, "Your move!");
+                 var move = 0;
+                 var position = 0;
+
+                 mainLayout(appName+': '+game1.name, game1.gameText[move%2],
+                     '<div id="game"></div>',
+                     '<div id="gamebuttons"><input id="backmenu" type="button" value="Back to Menu" /><input id="backintro" type="button" value="Back to Intro" /><input id="finish" type="button" value="Finish game" /></div>');
+
+                 $('#game').empty().append(game1.gameLayout);
+
+                 $('#backmenu').click(function() {
+                     mainMenuLayout();
+                 });
+
+                 $('#backintro').click(function() {
+                     game1.gameIntroLayout();
+                 });
+
+                 $('#finish').click(function() {
+                     game1.gameFinishLayout();
+                 });
+
+             },
+             gameFinishLayout: function() {
+                 mainLayout(appName+': '+game1.name, "This is (almost) the end!");
              }};

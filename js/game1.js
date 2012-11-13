@@ -1,10 +1,16 @@
 var gMML = '<div class="chessboard">';
 
 for(var i=0; i < 64; i++) {
-    if(i==27) {
-        gMML=gMML+'<div class="field field'+i+'"><div class="pawn"></div></div>';
+    if(i==0) {
+        gMML=gMML+'<div class="field starting"></div>';
+    } else if(i==27) {
+        gMML=gMML+'<div class="field"><div class="pawn"></div></div>';
+    } else if(i==28 || i==34 || i==35 || i==36) {
+        gMML=gMML+'<div class="field possible"></div>';
+    } else if(i==63) {
+        gMML=gMML+'<div class="field winning"></div>';
     } else {
-        gMML=gMML+'<div class="field field'+i+'"></div>';
+        gMML=gMML+'<div class="field"></div>';
     }
 }
 
@@ -14,7 +20,7 @@ var gMML0 = '<div class="chessboard">';
 
 for(var i=0; i < 64; i++) {
     if(i==0) {
-        gMML0=gMML0+'<div class="field field'+i+'"><div class="pawn"></div></div>';
+        gMML0=gMML0+'<div class="field starting"><div class="pawn"></div></div>';
     } else {
         gMML0=gMML0+'<div class="field"></div>';
     }
@@ -26,9 +32,9 @@ var gMML1 = '<div class="chessboard">';
 
 for(var i=0; i < 64; i++) {
     if(i==27) {
-        gMML1=gMML1+'<div class="field field'+i+'"><div class="pawn"></div></div>';
+        gMML1=gMML1+'<div class="field"><div class="pawn"></div></div>';
     } else if(i==28 || i==34 || i==35 || i==36) {
-        gMML1=gMML1+'<div class="field field'+i+'"></div>';
+        gMML1=gMML1+'<div class="field possible"></div>';
     } else {
         gMML1=gMML1+'<div class="field"></div>';
     }
@@ -40,7 +46,7 @@ var gMML2 = '<div class="chessboard">';
 
 for(var i=0; i < 64; i++) {
     if(i==63) {
-        gMML2=gMML2+'<div class="field field'+i+'"><div class="pawn"></div></div>';
+        gMML2=gMML2+'<div class="field winning"><div class="pawn"></div></div>';
     } else {
         gMML2=gMML2+'<div class="field"></div>';
     }
@@ -80,4 +86,11 @@ var game1 = {name: 'Pawn On a Chessboard',
                      $('#intro').empty().append(game1.gameIntro[indexIntro]);
                  });
 
+                 $('#playgame').click(function() {
+                     game1.gameGameLayout();
+                 });
+
+             },
+             gameGameLayout: function() {
+                 mainLayout(appName+': '+game1.name, "Your move!");
              }};

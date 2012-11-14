@@ -80,7 +80,7 @@ function gameYourMove(pos) {
             $('.field:eq('+(pos+8)+')').addClass("possible");
             $('.field:eq('+(pos+9)+')').addClass("possible");
         }
-    } else if (pos>=56 || pos<63) {
+    } else if (pos>=56 && pos<63) {
         $('.field:eq('+(pos+1)+')').addClass("possible");
     } else if (pos==63) {
         alert("The game is over!");

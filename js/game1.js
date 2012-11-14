@@ -88,6 +88,8 @@ function gameYourMove(pos) {
 
     $('.possible').on("click", function() {
 
+        $('.possible').off("click");
+
         position = $('.field').index(this);
 
         var offset = $(this).offset();

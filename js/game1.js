@@ -62,6 +62,49 @@ for(var i=0; i < 64; i++) {
 
 gMML2 = gMML2 + '</div>';
 
+function gameYourMove(pos) {
+
+    $('.field').removeClass("possible");
+
+    if(pos<56) {
+        if((pos%8)==0) {
+            $('.field:eq('+(pos+1)+')').addClass("possible");
+            $('.field:eq('+(pos+8)+')').addClass("possible");
+            $('.field:eq('+(pos+9)+')').addClass("possible");
+        } else if((pos%8)==7) {
+            $('.field:eq('+(pos+7)+')').addClass("possible");
+            $('.field:eq('+(pos+8)+')').addClass("possible");
+        } else {
+            $('.field:eq('+(pos+1)+')').addClass("possible");
+            $('.field:eq('+(pos+7)+')').addClass("possible");
+            $('.field:eq('+(pos+8)+')').addClass("possible");
+            $('.field:eq('+(pos+9)+')').addClass("possible");
+        }
+    } else if (pos>=56 || pos<63) {
+        $('.field:eq('+(pos+1)+')').addClass("possible");
+    } else if (pos==63) {
+        alert("The game is over!");
+    }
+
+    $('.possible').on("click", function() {
+
+        position = $('.field').index(this);
+
+        var offset = $(this).offset();
+        var offsetPawn = $('.pawn').offset();
+        var pushRight = (offset.left-offsetPawn.left+5);
+        var pushDown = (offset.top-offsetPawn.top+5);
+
+        $('.pawn').animate({left: '+='+pushRight+'px', top: '+='+pushDown+'px'}, "slow", "swing", function() {gameYourMove(position);});
+
+    });
+
+}
+
+function gameCompMove(pos) {
+
+}
+
 var game1 = {name: 'Pawn On a Chessboard',
              gameMainMenuLayout: gMML,
              gameIntro: ["Starting from the green field..."+gMML0, "...and making one of the possible moves..."+gMML1, "...you have to reach the red field before opponent."+gMML2],
@@ -112,23 +155,10 @@ var game1 = {name: 'Pawn On a Chessboard',
                  $('#game').empty().append(game1.gameLayout);
 
                  $('.field:eq('+0+')').append('<div class="pawn"></div>');
-
                  $('.field:eq('+0+')').addClass("starting");
-                 $('.field:eq('+1+')').addClass("possible");
-                 $('.field:eq('+8+')').addClass("possible");
-                 $('.field:eq('+9+')').addClass("possible");
                  $('.field:eq('+63+')').addClass("winning");
 
-                 $('.possible').click(function() {
-
-                     var offset = $(this).offset();
-                     var offsetPawn = $('.pawn').offset();
-                     var pushRight = (offset.left-offsetPawn.left+5);
-                     var pushDown = (offset.top-offsetPawn.top+5);
-
-                     $('.pawn').animate({left: '+='+pushRight+'px', top: '+='+pushDown+'px'}, "slow");
-
-                 });
+                 gameYourMove(position);
 
                  $('#backmenu').click(function() {
                      mainMenuLayout();

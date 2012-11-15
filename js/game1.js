@@ -84,7 +84,7 @@ function gameYourMove(pos) {
         $('.field').eq(pos+1).addClass("possible");
     } else if (pos==63) {
         alert("The game is over, you lose!");
-        var winner = "You are a loser, shame on you!";
+        var winner = false;
         game1.gameResultsLayout(winner);
         return;
     }
@@ -130,7 +130,7 @@ function gameCompMove(pos) {
         $('.field').eq(pos+1).addClass("possible");
     } else if (pos==63) {
         alert("The game is over, you win!");
-        var winner = "You are the winner, be proud of yourself!";
+        var winner = true;
         game1.gameResultsLayout(winner);
         return;
     }
@@ -160,7 +160,10 @@ function gameCompMove(pos) {
 var game1 = {name: 'Pawn On a Chessboard',
              gameMainMenuLayout: gMML,
              gameIntro: ["Starting from the green field..."+gMML0, "...and making one of the possible moves..."+gMML1, "...you have to reach the red field before opponent."+gMML2],
+             gameStrategy: ["Check out the winning positions:"+gL],
              gameText: ["Your move!", "Your opponent's move..."],
+             gameWinnerText: ["You are the winner, be proud of yourself!", "You are a loser, shame on you!"],
+             gameStrategyText: ["Wanna check if your strategy was correct?", "Wanna know the winning strategy?"],
              gameLayout: gL,
              gameIntroLayout: function() {
                  mainLayout(appName+': '+game1.name, "Please read the instructions, then click Play",
@@ -231,11 +234,30 @@ var game1 = {name: 'Pawn On a Chessboard',
                  });
 
              },
-             gameResultsLayout: function(winner) {
+             gameResultsLayout: function(w) {
+
+                 if(w) {
+                     var winnerText = game1.gameWinnerText[0];
+                     var strategyText = game1.gameStrategyText[0];
+                 } else {
+                     var winnerText = game1.gameWinnerText[1];
+                     var strategyText = game1.gameStrategyText[1];
+                 }
 
                  mainLayout(appName+': '+game1.name, "These are your results:",
-                     '<div id="results">'+winner+'</div>',
+                     '<div id="results"><p>'+winnerText+'</p><p>'+strategyText+'</p><div id="strategybuttons"><input id="strategyyes" type="button" value="Yes" /></div></div>',
                      '<div id="resultsbuttons"><input id="backmenu" type="button" value="Back to Menu" /><input id="backgame" type="button" value="Back to Game" /><input id="finish" type="button" value="Finish game" /></div>');
+
+                 $('#strategyyes').click(function() {
+                     $('#results').empty().append(game1.gameStrategy[0]);
+                     $('.field').eq(0).append('<div class="pawn"></div>');
+                     $('.field').eq(0).addClass("starting");
+                     for(var i=0; i<4; i++) {
+                         for(var j=0; j<4; j++) {
+                             $('.field').eq(9+16*i+2*j).addClass("winning");
+                         }
+                     }
+                 });
 
                  $('#backmenu').click(function() {
                      mainMenuLayout();

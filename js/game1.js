@@ -86,6 +86,7 @@ function gameYourMove(pos) {
         alert("The game is over, you lose!");
         var winner = "You are a loser, shame on you!";
         game1.gameResultsLayout(winner);
+        return;
     }
 
     $('#text').empty().append(game1.gameText[0]);
@@ -131,6 +132,7 @@ function gameCompMove(pos) {
         alert("The game is over, you win!");
         var winner = "You are the winner, be proud of yourself!";
         game1.gameResultsLayout(winner);
+        return;
     }
 
     $('#text').empty().append(game1.gameText[1]);

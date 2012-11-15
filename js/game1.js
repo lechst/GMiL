@@ -64,26 +64,29 @@ gMML2 = gMML2 + '</div>';
 
 function gameYourMove(pos) {
 
+    $('#text').empty().append(game1.gameText[0]);
+
     $('.field').removeClass("possible");
 
     if(pos<56) {
         if((pos%8)==0) {
-            $('.field:eq('+(pos+1)+')').addClass("possible");
-            $('.field:eq('+(pos+8)+')').addClass("possible");
-            $('.field:eq('+(pos+9)+')').addClass("possible");
+            $('.field').eq(pos+1).addClass("possible");
+            $('.field').eq(pos+8).addClass("possible");
+            $('.field').eq(pos+9).addClass("possible");
         } else if((pos%8)==7) {
-            $('.field:eq('+(pos+7)+')').addClass("possible");
-            $('.field:eq('+(pos+8)+')').addClass("possible");
+            $('.field').eq(pos+7).addClass("possible");
+            $('.field').eq(pos+8).addClass("possible");
         } else {
-            $('.field:eq('+(pos+1)+')').addClass("possible");
-            $('.field:eq('+(pos+7)+')').addClass("possible");
-            $('.field:eq('+(pos+8)+')').addClass("possible");
-            $('.field:eq('+(pos+9)+')').addClass("possible");
+            $('.field').eq(pos+1).addClass("possible");
+            $('.field').eq(pos+7).addClass("possible");
+            $('.field').eq(pos+8).addClass("possible");
+            $('.field').eq(pos+9).addClass("possible");
         }
     } else if (pos>=56 && pos<63) {
-        $('.field:eq('+(pos+1)+')').addClass("possible");
+        $('.field').eq(pos+1).addClass("possible");
     } else if (pos==63) {
-        alert("The game is over!");
+        alert("The game is over, you lose!");
+        return;
     }
 
     $('.possible').on("click", function() {
@@ -97,13 +100,58 @@ function gameYourMove(pos) {
         var pushRight = (offset.left-offsetPawn.left+5);
         var pushDown = (offset.top-offsetPawn.top+5);
 
-        $('.pawn').animate({left: '+='+pushRight+'px', top: '+='+pushDown+'px'}, "slow", "swing", function() {gameYourMove(position);});
+        $('.pawn').animate({left: '+='+pushRight+'px', top: '+='+pushDown+'px'}, "slow", "swing", function() {gameCompMove(position);});
 
     });
 
 }
 
 function gameCompMove(pos) {
+
+    $('#text').empty().append(game1.gameText[1]);
+
+    $('.field').removeClass("possible");
+
+    if(pos<56) {
+        if((pos%8)==0) {
+            $('.field').eq(pos+1).addClass("possible");
+            $('.field').eq(pos+8).addClass("possible");
+            $('.field').eq(pos+9).addClass("possible");
+        } else if((pos%8)==7) {
+            $('.field').eq(pos+7).addClass("possible");
+            $('.field').eq(pos+8).addClass("possible");
+        } else {
+            $('.field').eq(pos+1).addClass("possible");
+            $('.field').eq(pos+7).addClass("possible");
+            $('.field').eq(pos+8).addClass("possible");
+            $('.field').eq(pos+9).addClass("possible");
+        }
+    } else if (pos>=56 && pos<63) {
+        $('.field').eq(pos+1).addClass("possible");
+    } else if (pos==63) {
+        alert("The game is over, you win!");
+        return;
+    }
+
+    var possibleMoves = [];
+
+    if($('.possible').hasClass('towin')) {
+        var winLength = $('.possible.towin').length;
+        if (winLength == 1) {
+            position = $('.field').index($('.possible.towin').eq(0));
+        } else {
+            position = $('.field').index($('.possible.towin').eq(Math.round(Math.random())));
+        }
+    } else {
+        position = $('.field').index($('.possible').eq(Math.floor(Math.random()*$('.possible').length)));
+    }
+
+    var offset = $('.field').eq(position).offset();
+    var offsetPawn = $('.pawn').offset();
+    var pushRight = (offset.left-offsetPawn.left+5);
+    var pushDown = (offset.top-offsetPawn.top+5);
+
+    $('.pawn').animate({left: '+='+pushRight+'px', top: '+='+pushDown+'px'}, "slow", "swing", function() {gameYourMove(position);});
 
 }
 
@@ -147,18 +195,24 @@ var game1 = {name: 'Pawn On a Chessboard',
 
              },
              gameGameLayout: function() {
-                 var move = 0;
+
                  var position = 0;
 
-                 mainLayout(appName+': '+game1.name, game1.gameText[move%2],
+                 mainLayout(appName+': '+game1.name, game1.gameText[0],
                      '<div id="game"></div>',
                      '<div id="gamebuttons"><input id="backmenu" type="button" value="Back to Menu" /><input id="backintro" type="button" value="Back to Intro" /><input id="finish" type="button" value="Finish game" /></div>');
 
                  $('#game').empty().append(game1.gameLayout);
 
-                 $('.field:eq('+0+')').append('<div class="pawn"></div>');
-                 $('.field:eq('+0+')').addClass("starting");
-                 $('.field:eq('+63+')').addClass("winning");
+                 $('.field').eq(0).append('<div class="pawn"></div>');
+                 $('.field').eq(0).addClass("starting");
+                 $('.field').eq(63).addClass("winning");
+
+                 for(var i=0; i<4; i++) {
+                     for(var j=0; j<4; j++) {
+                         $('.field').eq(9+16*i+2*j).addClass("towin");
+                     }
+                 }
 
                  gameYourMove(position);
 

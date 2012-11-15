@@ -64,8 +64,6 @@ gMML2 = gMML2 + '</div>';
 
 function gameYourMove(pos) {
 
-    $('#text').empty().append(game1.gameText[0]);
-
     $('.field').removeClass("possible");
 
     if(pos<56) {
@@ -86,8 +84,11 @@ function gameYourMove(pos) {
         $('.field').eq(pos+1).addClass("possible");
     } else if (pos==63) {
         alert("The game is over, you lose!");
-        return;
+        var winner = "You are a loser, shame on you!";
+        game1.gameResultsLayout(winner);
     }
+
+    $('#text').empty().append(game1.gameText[0]);
 
     $('.possible').on("click", function() {
 
@@ -107,8 +108,6 @@ function gameYourMove(pos) {
 }
 
 function gameCompMove(pos) {
-
-    $('#text').empty().append(game1.gameText[1]);
 
     $('.field').removeClass("possible");
 
@@ -130,10 +129,11 @@ function gameCompMove(pos) {
         $('.field').eq(pos+1).addClass("possible");
     } else if (pos==63) {
         alert("The game is over, you win!");
-        return;
+        var winner = "You are the winner, be proud of yourself!";
+        game1.gameResultsLayout(winner);
     }
 
-    var possibleMoves = [];
+    $('#text').empty().append(game1.gameText[1]);
 
     if($('.possible').hasClass('towin')) {
         var winLength = $('.possible.towin').length;
@@ -222,6 +222,25 @@ var game1 = {name: 'Pawn On a Chessboard',
 
                  $('#backintro').click(function() {
                      game1.gameIntroLayout();
+                 });
+
+                 $('#finish').click(function() {
+                     game1.gameFinishLayout();
+                 });
+
+             },
+             gameResultsLayout: function(winner) {
+
+                 mainLayout(appName+': '+game1.name, "These are your results:",
+                     '<div id="results">'+winner+'</div>',
+                     '<div id="resultsbuttons"><input id="backmenu" type="button" value="Back to Menu" /><input id="backgame" type="button" value="Back to Game" /><input id="finish" type="button" value="Finish game" /></div>');
+
+                 $('#backmenu').click(function() {
+                     mainMenuLayout();
+                 });
+
+                 $('#backgame').click(function() {
+                     game1.gameGameLayout();
                  });
 
                  $('#finish').click(function() {

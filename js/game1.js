@@ -244,7 +244,7 @@ var game1 = {name: 'Pawn On a Chessboard',
                      var strategyText = game1.gameStrategyText[1];
                  }
 
-                 mainLayout(appName+': '+game1.name, "These are your results:",
+                 mainLayout(appName+': '+game1.name, "This is your result:",
                      '<div id="results"><p>'+winnerText+'</p><p>'+strategyText+'</p><div id="strategybuttons"><input id="strategyyes" type="button" value="Yes" /></div></div>',
                      '<div id="resultsbuttons"><input id="backmenu" type="button" value="Back to Menu" /><input id="backgame" type="button" value="Back to Game" /><input id="finish" type="button" value="Finish game" /></div>');
 

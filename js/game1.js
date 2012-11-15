@@ -249,6 +249,7 @@ var game1 = {name: 'Pawn On a Chessboard',
                      '<div id="resultsbuttons"><input id="backmenu" type="button" value="Back to Menu" /><input id="backgame" type="button" value="Back to Game" /><input id="finish" type="button" value="Finish game" /></div>');
 
                  $('#strategyyes').click(function() {
+                     $('#text').empty().append("The explanation of the winning strategy.");
                      $('#results').empty().append(game1.gameStrategy[0]);
                      $('.field').eq(0).append('<div class="pawn"></div>');
                      $('.field').eq(0).addClass("starting");
